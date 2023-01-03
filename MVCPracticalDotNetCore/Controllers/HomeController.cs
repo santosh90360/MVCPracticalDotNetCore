@@ -22,6 +22,11 @@ namespace MVCPracticalDotNetCore.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

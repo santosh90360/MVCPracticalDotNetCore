@@ -1,0 +1,104 @@
+﻿@model MVCPracticalDotNetCore.Models.RegistrationModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-6 p-4 border rounded">
+        <h3 class="text-info"> User register form</h3>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-sm-6 p-4 border rounded">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword" class="control-label"></label>
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Gender:  </label>
+            <input id="GenderFemale"
+                   name="Gender"
+                   type="radio"
+                   value="Female" /><span> Female</span> &ensp;&ensp;&ensp;
+
+            <input id="GenderMale"
+                   name="Gender"
+                   type="radio"
+                   value="Male" /><span> Male</span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+<div class="modal" id="UserModal" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><strong>User user details</strong></h4>
+            </div>
+            <div class="modal-body leftalign">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <span id="psMessageEdit"></span>
+                <div class="form-group required formGroupPadding">
+                    <label asp-for="Email">Email</label>
+                    <input type="text" id="txtEmailView" class="form-control" autocomplete="off" required="true" maxlength="30" readonly />
+                    <p id="pErrorUserNameEdit" class="text-danger"></p>
+                </div>
+
+                <div class="form-group required formGroupPadding">
+                    <label asp-for="FirstName">First Name</label>
+                    <input type="text" placeholder="Enter First Name" id="txtFirstNameView" name="txtFirstNameEdit" class="form-control" autocomplete="off" />
+                    <span id="spFirstNameEdit" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group required">
+                    <label asp-for="LastName" class="formGroupPadding">Last Name</label>
+                    <input type="text" placeholder="Enter Last Name" id="txtLastNameView" name="txtSecondNameEdit" class="form-control" autocomplete="off" />                 
+                </div>
+               
+                <div class="form-group required">
+                    <label>Gender : </label>
+                    <span id="spGenderView"></span>
+                </div>
+
+                <div class="form-group submitbtn text-center">                   
+                    <button type="button" class="btn btn-sm btn-danger mb-1 float-left" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
