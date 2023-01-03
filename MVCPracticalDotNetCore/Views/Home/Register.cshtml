@@ -4,7 +4,7 @@
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="~/js/userRegistration.js"></script>
 <div class="row">
     <div class="col-sm-6 p-4 border rounded">
         <h3 class="text-info"> User register form</h3>
@@ -52,11 +52,11 @@
                    value="Male" /><span> Male</span>
         </div>
         <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
+            <input type="submit" value="Create" class="btn btn-primary" onclick="return AddUser();" />
         </div>
     </div>
 </div>
-<div class="modal" id="UserModal" role="dialog">
+<div class="modal" id="addUserModal" role="dialog">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
@@ -68,28 +68,33 @@
                 <span id="psMessageEdit"></span>
                 <div class="form-group required formGroupPadding">
                     <label asp-for="Email">Email</label>
-                    <input type="text" id="txtEmailView" class="form-control" autocomplete="off" required="true" maxlength="30" readonly />
+                    <input type="text" id="txtEmailView" class="form-control" autocomplete="off" />
                     <p id="pErrorUserNameEdit" class="text-danger"></p>
                 </div>
 
                 <div class="form-group required formGroupPadding">
                     <label asp-for="FirstName">First Name</label>
-                    <input type="text" placeholder="Enter First Name" id="txtFirstNameView" name="txtFirstNameEdit" class="form-control" autocomplete="off" />
+                    <input type="text" id="txtFirstNameView" name="txtFirstNameView" class="form-control" autocomplete="off" />
                     <span id="spFirstNameEdit" class="text-danger"></span>
 
                 </div>
 
                 <div class="form-group required">
                     <label asp-for="LastName" class="formGroupPadding">Last Name</label>
-                    <input type="text" placeholder="Enter Last Name" id="txtLastNameView" name="txtSecondNameEdit" class="form-control" autocomplete="off" />                 
+                    <input type="text" id="txtLastNameView" name="txtSecondNameView" class="form-control" autocomplete="off" />
                 </div>
-               
+
+                <div class="form-group required">
+                    <label asp-for="Password" class="formGroupPadding">Password</label>
+                    <input type="text" id="txtPasswordView" name="txtPasswordView" class="form-control" autocomplete="off" />
+                </div>
+
                 <div class="form-group required">
                     <label>Gender : </label>
                     <span id="spGenderView"></span>
                 </div>
 
-                <div class="form-group submitbtn text-center">                   
+                <div class="form-group submitbtn closeButtonMargin">
                     <button type="button" class="btn btn-sm btn-danger mb-1 float-left" data-dismiss="modal">Close</button>
                 </div>
 
@@ -102,3 +107,13 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<style>
+    .closeButtonMargin {
+        margin-left: 45% !important;
+    }
+
+    .modal-header {
+        display: block;
+    }
+</style>
