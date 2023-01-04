@@ -1,0 +1,103 @@
+﻿@model MVCPracticalDotNetCore.Models.StudentModel
+
+@{
+    ViewData["Title"] = "Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/js/student.js"></script>
+
+<div class="row">
+    <div class="col-sm-6 p-4">
+        <h3 class="text-info"> Student Detail</h3>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Gender" class="control-label"></label>
+            <input asp-for="Gender" class="form-control" />
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label asp-for="RoleNo" class="control-label"></label>
+            <input asp-for="RoleNo" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Class" class="control-label"></label>
+            <input asp-for="Class" class="form-control" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <table class="table table-bordered">
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Math" class="control-label"></label>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input asp-for="Math" class="form-control" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="English" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="English" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Science" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="Science" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="Hindi" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="Hindi" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label asp-for="SocialScience" class="control-label"></label>
+                </td>
+                <td>
+                    <input asp-for="SocialScience" class="form-control" />
+                </td>
+            </tr>
+            <tr id="trTotal" style="display:none;">
+                <td colspan="2" class="text-center text-success">
+                    Total Marks: <span id="spTotalMarks"></span>
+                </td>
+            </tr>
+        </table>
+
+        <div class="form-group marginbtn">
+            <input type="submit" value="Total" class="btn btn-primary" onclick="return CalculateMarks();" />
+        </div>
+    </div>
+</div>
+
+<style>
+    .marginbtn {
+        margin-left: 35%;
+    }
+</style>
